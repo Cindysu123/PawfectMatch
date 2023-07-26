@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
-import './FindYourPets.css';
+import '../assets/css/FindYourPets.css';
 
 const FindYourPets = () => {
   const [step, setStep] = useState(0);

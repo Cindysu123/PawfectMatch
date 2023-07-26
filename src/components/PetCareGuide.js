@@ -1,12 +1,12 @@
 import React from 'react';
 import Footer from './Footer';
-import './PetCareGuide.css';
-import img1 from './assets/image 21.png'
-import img2 from './assets/image 22.png'
-import img3 from './assets/image 23.png'
-import img4 from './assets/image 24.png'
+import '../assets/css/PetCareGuide.css';
+import img1 from '../assets/img/image 21.png'
+import img2 from '../assets/img/image 22.png'
+import img3 from '../assets/img/image 23.png'
+import img4 from '../assets/img/image 24.png'
 
-import bg from './assets/footprint.png'
+import bg from '../assets/img/footprint.png'
 
 const PetCareGuide = () => {
   return (

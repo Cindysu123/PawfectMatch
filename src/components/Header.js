@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import './Header.css';
-import icon from './assets/icon.png';
+import '../assets/css/Header.css';
+import icon from '../assets/img/icon.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './Header';
-import Home from './Home';
-import Pets from './Pets';
-import PetCareGuide from './PetCareGuide';
-import FindYourPets from './FindYourPets';
+import Header from './components/Header';
+import Home from './components/Home';
+import Pets from './components/Pets';
+import PetCareGuide from './components/PetCareGuide';
+import FindYourPets from './components/FindYourPets';
 import './App.css';
 
 const App = () => {

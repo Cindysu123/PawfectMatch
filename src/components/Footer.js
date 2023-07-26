@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Footer.css'; // Assuming you create a separate CSS file for the footer styles
-import icon from './assets/icon.png'; // Make sure to provide the correct path to your icon
+import '../assets/css/Footer.css'; // Assuming you create a separate CSS file for the footer styles
+import icon from '../assets/img/icon.png'; // Make sure to provide the correct path to your icon
 
 const Footer = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Pets.css';
+import '../assets/css/Pets.css';
 import Footer from './Footer';
 import PetCard from './PetCard';
 

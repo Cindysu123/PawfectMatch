@@ -1,5 +1,5 @@
 import React from 'react';
-import './PetCard.css'; // This CSS file should style the PetCard
+import '../assets/css/PetCard.css'; // This CSS file should style the PetCard
 
 const PetCard = ({ pet }) => {
   return (

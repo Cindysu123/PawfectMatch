@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css';
+import '../assets/css/Home.css';
 import Footer from './Footer';
 
-import v1 from './assets/paws/Vector 1.png';
-import v2 from './assets/paws/Vector 2.png';
-import v3 from './assets/paws/Vector 3.png';
-import v4 from './assets/paws/Vector 4.png';
-import v5 from './assets/paws/Vector 5.png';
-import img2 from './assets/image2.png';
-import img3 from './assets/image3.png';
-import bg1 from './assets/bg1.png';
-import bg2 from './assets/bg2.png';
+import v1 from '../assets/img/paws/Vector 1.png';
+import v2 from '../assets/img/paws/Vector 2.png';
+import v3 from '../assets/img/paws/Vector 3.png';
+import v4 from '../assets/img/paws/Vector 4.png';
+import v5 from '../assets/img/paws/Vector 5.png';
+import img2 from '../assets/img/image2.png';
+import img3 from '../assets/img/image3.png';
+import bg1 from '../assets/img/bg1.png';
+import bg2 from '../assets/img/bg2.png';
 
 const Home = () => {
   const [scrolled, setScrolled] = useState(false);
