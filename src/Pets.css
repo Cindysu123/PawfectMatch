@@ -1,0 +1,53 @@
+/* Pets.css */
+.selection-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .select-container{
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vw;
+    background-color: white;
+  }
+  
+  .selection-section label {
+    display: block;
+    margin-right: 5px;
+  }
+  
+  .selection-section select,
+  .selection-section input[type='number'] {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .selection-section div {
+    display: flex;
+    align-items: center;
+  }
+
+  .selection1{
+    background-color: #fdc072;
+    padding: 1vw;
+    border-radius: 0.5vw;
+  }
+  .selection2{
+    background-color: #e4996d;
+    padding: 1vw;
+    border-radius: 0.5vw;
+  }
+  .selection3{
+    background-color: #ffa1ac;
+    padding: 1vw;
+    border-radius: 0.5vw;
+  }
+  .selection4{
+    background-color: #7888af;
+    padding: 1vw;
+    border-radius: 0.5vw;
+  }
+  

@@ -1,0 +1,301 @@
+/* Home.css */
+.home{
+  padding-top: 60px;
+}
+
+.head{
+  padding: 4vw;
+}
+
+.home-container {
+  position: relative;
+  z-index: 1;
+}
+
+.container2{
+  background-color: white;
+  padding: 2vw;
+  border-radius: 2vw;
+}
+
+.p1 {
+  width: 60vw;
+  font-size: 2vw;
+}
+
+.selection-section {
+  margin-top: 20px;
+}
+
+.selection-section p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.selection-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.selection-section input {
+  margin-right: 5px;
+}
+
+.learn-more-section {
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.learn-more-section h2 {
+  margin-bottom: 10px;
+}
+
+.learn-more-section p {
+  margin-bottom: 20px;
+}
+
+.learn-more-section button {
+  margin-right: 10px;
+}
+
+.find-pet-section {
+  position: relative;
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+  z-index: 4;
+}
+
+.find-pet-section h2 {
+  margin-bottom: 10px;
+}
+
+.find-pet-section p {
+  margin-bottom: 20px;
+}
+
+.find-pet-section button {
+  margin-right: 10px;
+}
+
+.image {
+  position: absolute;
+  z-index: 2;
+  transition: 0.5s ease-out;
+}
+
+.img1 {
+  top: 14vw;
+  left: 42vw;
+  z-index: -1;
+}
+
+.b1{
+  border-radius: 10px;
+  background: #FFA1AC;
+  width: 16vw;
+  height: 4vw;
+  border: none;
+  color: white;
+  font-size: 1.6vw;
+  cursor: pointer;
+}
+
+.img2 {
+  top: -4vw;
+  left: 54vw;
+}
+.img3 {
+  top: 0vw;
+  left: 71vw;
+}
+.img4 {
+  top: 17vw;
+  left: 78vw;
+}
+.img5 {
+  top: 26vw;
+  left: 66vw;
+}
+
+.img2.scrolled {
+  top: 44.7vw;  /* New position */
+  left: 52vw; /* New position */
+}
+.img3.scrolled {
+  top: 44.7vw;  /* New position */
+  left: 7.4vw; /* New position */
+}
+.img4.scrolled {
+  top: 46vw;  /* New position */
+  left: 75vw; /* New position */
+}
+.img5.scrolled {
+  top: 42.4vw;  /* New position */
+  left: 30vw; /* New position */
+}
+
+.img1 img{
+  width: 26vw;
+}
+.img2 img{
+  width: 17vw;
+}
+.img3 img{
+  width: 17vw;
+}
+.img4 img{
+  width: 17vw;
+}
+.img5 img{
+  width: 17vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+  }
+
+  .img1, .img2, .img3, .img4, .img5 {
+    top: 0;
+    left: 0;
+  }
+}
+
+.h1{
+  padding-top: 2vw;
+}
+
+.selection-section{
+  margin-top: 10vw;
+}
+
+.p2{
+  font-size: 2.4vw;
+}
+
+.p3{
+  font-size: 1.8vw;
+}
+
+.pet-type {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8vw;
+  margin-bottom: 20vw;
+  padding: 0 11vw;
+}
+
+.pet-type p {
+  margin: 0;
+}
+
+.learn-more-section {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.section-left img {
+  width: 40vw;
+  z-index: -3;
+}
+
+.section-right{
+  align-items: left;
+  margin-left: 4vw;
+  width: 50vw;
+}
+
+.h3{
+  font-weight: normal;
+  font-size: 2.4vw;
+}
+
+.b2, .b3{
+  border-radius: 10px;
+  background: #7888AF;
+  width: 16vw;
+  height: 4vw;
+  border: none;
+  color: white;
+  font-size: 1.6vw;
+  cursor: pointer;
+  text-align: center;
+}
+
+.learn-more-section a:not(:last-child) {
+  margin-right: 2vw;
+}
+
+.bg1, .bg2{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.bg1{
+  z-index: 1;
+}
+
+.bg2{
+  z-index: 4;
+}
+
+.h4{
+  font-weight: normal;
+  font-size: 2.4vw;
+}
+
+.find-pet-section {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.section2-left{
+  width: 40vw;
+}
+
+.p4{
+  font-size: 1.8vw;
+}
+
+.section2-right img{
+  width: 48vw;
+  z-index: 1;
+}
+
+.b4{
+  border-radius: 10px;
+  background: #fdc072;
+  width: 16vw;
+  height: 4vw;
+  border: none;
+  color: white;
+  font-size: 1.6vw;
+  cursor: pointer;
+  text-align: center;
+}
+
+.b1:hover {
+  background-color: #ff8c9a; /* you can change to any color you want */
+  transition: background-color 0.3s ease; /* this makes the color change smoothly */
+}
+
+.b2:hover, .b3:hover {
+  background-color: #6678a6;
+  transition: background-color 0.3s ease;
+}
+
+.b4:hover {
+  background-color: #fcb761;
+  transition: background-color 0.3s ease;
+}

@@ -1,0 +1,73 @@
+/* PetCareGuide.css */
+.container {
+  margin-top: 5vw;
+  padding: 2vw;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+}
+
+.footprint {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+  
+.guide-content {
+  position: relative;
+  margin-top: 20px;
+  padding: 2vw;
+  background-color: #fcf2dc;
+  border-radius: 2vw;
+  z-index: 1;
+}
+
+.h1{
+  font-weight: normal;
+}
+
+.guide-content p{
+  font-size: 1.4vw;
+}
+
+h2 {
+  margin-top: 30px;
+}
+  
+.card-container {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+  
+.card {
+  position: relative; /* Added */
+  border: 1px solid #ccc;
+  border-radius: 2vw;
+  width: 40vw;
+  overflow: hidden;
+  z-index: 1;
+  background-color: white;
+}
+
+.card h3 {
+  text-align: center;
+}
+
+.card-img {
+  width: 100%;
+}
+
+.card p {
+  position: absolute; /* Added */
+  margin-bottom: 0;
+  bottom: 0; /* Added */
+  background-color: rgba(0, 0, 0, 0.7); /* Added semi-transparent background for readability */
+  padding: 2vw;
+  color: white;
+}
