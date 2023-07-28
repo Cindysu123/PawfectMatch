@@ -1,15 +1,21 @@
+// PetCard.js
 import React from 'react';
-import '../assets/css/PetCard.css'; // This CSS file should style the PetCard
+import '../assets/css/PetCard.css';
 
 const PetCard = ({ pet }) => {
   return (
     <div className="pet-card">
-      <img src={pet.image} alt={pet.name} className="pet-image" />
+      <h2>{pet.name}</h2>
+      <img src={pet.photos[0]?.medium} alt={pet.name} className="pet-image" />
       <div className="pet-info">
-        <h2>{pet.name}</h2>
-        <p>{`Age: ${pet.age}`}</p>
-        <p>{`Size: ${pet.size}`}</p>
-        <p>{`Gender: ${pet.gender}`}</p>
+        <div style={{display: 'flex'}}>
+          <p>{`${pet.age}`}</p>
+          <p>{`${pet.size}`}</p>
+          <p>{`${pet.gender}`}</p>
+        </div>
+        <div>
+          <p>{`${pet.breeds.primary}`}</p>
+        </div>
       </div>
     </div>
   );

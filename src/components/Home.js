@@ -12,7 +12,7 @@ import img2 from '../assets/img/image2.png';
 import img3 from '../assets/img/image3.png';
 import bg1 from '../assets/img/bg1.png';
 import bg2 from '../assets/img/bg2.png';
-
+import paw from '../assets/img/paw_small.png'
 const Home = () => {
   const [scrolled, setScrolled] = useState(false);
 

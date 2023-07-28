@@ -45,6 +45,15 @@ nav {
 .nav-links li {
   margin: 0;
   padding: 1em; 
+  transition: transform 0.3s ease;
+}
+
+.nav-links li.logo-big {
+  transform: scale(1.1);
+}
+
+.nav-links li.logo-small {
+  transform: scale(1);
 }
 
 .nav-links li a {

@@ -32,16 +32,16 @@ const Header = () => {
           <img src={icon} alt="Logo" className={isScrolled ? "logo-small" : "logo-big"} />
         </div>
         <ul className="nav-links">
-          <li>
-            <NavLink to="/" exact className={activeLink === "/" ? "active-link" : ""}>Home</NavLink>
+          <li className={isScrolled ? "logo-small" : "logo-big"}>
+            <NavLink to="/" exact="true" className={activeLink === "/" ? "active-link" : ""}>Home</NavLink>
           </li>
-          <li>
+          <li className={isScrolled ? "logo-small" : "logo-big"}>
             <NavLink to="/pets" className={activeLink === "/pets" ? "active-link" : ""}>Pets</NavLink>
-          </li>
-          <li>
+          </li >
+          <li className={isScrolled ? "logo-small" : "logo-big"}>
             <NavLink to="/pet-care-guide" className={activeLink === "/pet-care-guide" ? "active-link" : ""}>Pet Care Guide</NavLink>
           </li>
-          <li>
+          <li className={isScrolled ? "logo-small" : "logo-big"}>
             <NavLink to="/find-your-pets" className={activeLink === "/find-your-pets" ? "active-link" : ""}>Find Your Pets</NavLink>
           </li>
         </ul>
