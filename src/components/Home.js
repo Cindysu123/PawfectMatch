@@ -12,7 +12,7 @@ import img2 from '../assets/img/image2.png';
 import img3 from '../assets/img/image3.png';
 import bg1 from '../assets/img/bg1.png';
 import bg2 from '../assets/img/bg2.png';
-import paw from '../assets/img/paw_small.png'
+
 const Home = () => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -47,25 +47,25 @@ const Home = () => {
             <div className='pet-type'>
               <p>Dog</p>
               <p>Cat</p>
-              <p>Rodent</p>
+              <p>Rabbit</p>
               <p>Others</p>
             </div>
-            <Link to="/pets/rodents">
+            <Link to="/pets">
               <div className={`image img2 ${scrolled ? 'scrolled' : ''}`}>
                 <img src={v2} alt="Vector 2"/>
               </div>
             </Link>
-            <Link to="/pets/dogs">
+            <Link to="/pets">
               <div className={`image img3 ${scrolled ? 'scrolled' : ''}`}>
                 <img src={v3} alt="Vector 3"/>
               </div>
             </Link>
-            <Link to="/pets/others">
+            <Link to="/pets">
               <div className={`image img4 ${scrolled ? 'scrolled' : ''}`}>
                 <img src={v4} alt="Vector 4"/>
               </div>
             </Link>
-            <Link to="/pets/cats">
+            <Link to="/pets">
               <div className={`image img5 ${scrolled ? 'scrolled' : ''}`}>
                 <img src={v5} alt="Vector 5"/>
               </div>
@@ -81,10 +81,10 @@ const Home = () => {
               <p className='p3'>
                 Adopting a pet is a wonderful experience that comes with great responsibilities. Explore our collection of articles and guides, curated to provide you with valuable insights and tips for a rewarding pet-parent journey.
               </p>
-              <Link to="/adoption-guide">
+              <Link to="/pet-care-guide">
                 <button className='b2'>Adoption Guide</button>
               </Link>
-              <Link to="/adoption-faqs">
+              <Link to="/pet-care-guide">
                 <button className='b3'>Adoption FAQs</button>
               </Link>
             </div>

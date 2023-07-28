@@ -145,18 +145,43 @@
 
 .img1 img{
   width: 26vw;
+  transition: all 0.3s ease;
 }
+
 .img2 img{
   width: 17vw;
+  transition: all 0.3s ease;
 }
+
+.img2 img:hover{
+  width: 20vw;
+}
+
 .img3 img{
   width: 17vw;
+  transition: all 0.3s ease;
 }
+
+.img3 img:hover{
+  width: 20vw;
+}
+
 .img4 img{
   width: 17vw;
+  transition: all 0.3s ease;
 }
+
+.img4 img:hover{
+  width: 20vw;
+}
+
 .img5 img{
   width: 17vw;
+  transition: all 0.3s ease;
+}
+
+.img5 img:hover{
+  width: 20vw;
 }
 
 @media only screen and (max-width: 600px) {
@@ -294,15 +319,15 @@
 
 .b1:hover {
   background-color: #ff8c9a; /* you can change to any color you want */
-  transition: background-color 0.3s ease; /* this makes the color change smoothly */
+  transition: background-color 0.4s ease; /* this makes the color change smoothly */
 }
 
 .b2:hover, .b3:hover {
   background-color: #6678a6;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.4s ease;
 }
 
 .b4:hover {
   background-color: #fcb761;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.4s ease;
 }
