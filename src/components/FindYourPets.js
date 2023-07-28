@@ -4,10 +4,14 @@ import '../assets/css/FindYourPets.css';
 
 const FindYourPets = () => {
   const [step, setStep] = useState(0);
+  const [pet, setPet] = useState("");
   const [answers, setAnswers] = useState({
     living: "",
     time: "",
     allergies: "",
+    active: "",
+    age: "",
+    size: ""
   });
 
   const handleChange = (e) => {
@@ -15,13 +19,22 @@ const FindYourPets = () => {
       ...answers,
       [e.target.name]: e.target.value
     });
-    setStep(step + 1);
+    if (e.target.value) {
+      setStep(step + 1);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your own logic here to determine the best pet based on the answers
-    console.log(answers);
+    let suitablePet = 'Dog';
+    if (answers.living === 'apartment' && answers.time === 'fewhours' && answers.size === 'small') {
+      suitablePet = 'Cat';
+    }
+    if (answers.allergies === 'yes') {
+      suitablePet = 'Fish';
+    }
+    setPet(suitablePet);
+    console.log(suitablePet);
   };
 
   return (
@@ -29,7 +42,6 @@ const FindYourPets = () => {
       <div className="find-pet-section">
         <h2>Find Your Perfect Pet Match</h2>
         <p>Answer a few questions to discover the ideal pet that suits your lifestyle and preferences.</p>
-
         <form onSubmit={handleSubmit}>
           {step >= 0 && (
             <label>
@@ -61,8 +73,40 @@ const FindYourPets = () => {
               </select>
             </label>
           )}
-          {step >= 3 && <input type="submit" value="Find My Pet" />}
+          {step >= 3 && (
+            <label>
+              How active are you?:
+              <select name="active" value={answers.active} onChange={handleChange}>
+                <option value="">--Please choose an option--</option>
+                <option value="active">Active</option>
+                <option value="sedentary">Sedentary</option>
+              </select>
+            </label>
+          )}
+          {step >= 4 && (
+            <label>
+              Age preference for pet:
+              <select name="age" value={answers.age} onChange={handleChange}>
+                <option value="">--Please choose an option--</option>
+                <option value="young">Young</option>
+                <option value="adult">Adult</option>
+              </select>
+            </label>
+          )}
+          {step >= 5 && (
+            <label>
+              Preferred pet size:
+              <select name="size" value={answers.size} onChange={handleChange}>
+                <option value="">--Please choose an option--</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </label>
+          )}
+          {step >= 6 && <input type="submit" value="Find My Pet" />}
         </form>
+        {pet && <p>Your ideal pet is a {pet}</p>}
       </div>
       <Footer />
     </div>
