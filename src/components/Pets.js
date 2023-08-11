@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import '../assets/css/Pets.css';
 import Footer from './Footer';
 import PetCard from './PetCard';
@@ -11,19 +12,22 @@ import loading from '../assets/img/magnifying-glass.gif'
 
 const Pets = () => {
   const [pets, setPets] = useState([]);
-  const [selectedType, setSelectedType] = useState('');
   const [selectedAge, setSelectedAge] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
   const [currentPage, setCurrentPage] = useState(1); // Add this line
-  const [searchText, setSearchText] = useState(''); // New state for the search text
   const [breedOptions, setBreedOptions] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
   const [selectedBreedFinal, setSelectedBreedFinal] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  
+  const { type } = useParams();
+  const [selectedType, setSelectedType] = useState('');
 
+  useEffect(() => {
+    setSelectedType(type || '');
+  }, [type]);
+  
   useEffect(() => {
     const fetchPets = async () => {
       setIsLoading(true); // set loading to true before starting the fetch
@@ -143,16 +147,16 @@ const Pets = () => {
       <div className="selection-section">
         <div className='selection1'>
           <label>Type:</label>
-          <select name="type" onChange={e => setSelectedType(e.target.value)}>
-            <option value="">All</option>
-            <option value="Dog">Dog</option>
-            <option value="Cat">Cat</option>
-            <option value="Rabbit">Rabbit</option>
-            <option value="Small & Furry">Small & Furry</option>
-            <option value="Horse">Horse</option>
-            <option value="Bird">Bird</option>
-            <option value="Scales, Fins & Other">Scales, Fins & Other</option>
-            <option value="Barnyard">Barnyard</option>
+          <select name="type" value={selectedType} onChange={e => setSelectedType(e.target.value)}>
+              <option value="">All</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Rabbit">Rabbit</option>
+              <option value="Small & Furry">Small & Furry</option>
+              <option value="Horse">Horse</option>
+              <option value="Bird">Bird</option>
+              <option value="Scales, Fins & Other">Scales, Fins & Other</option>
+              <option value="Barnyard">Barnyard</option>
           </select>
           <label>Breed:</label>
           <input type="text" list="breeds" id="breed" name="breed" value={selectedBreed} onChange={e => setSelectedBreed(e.target.value)} onBlur={e => setSelectedBreedFinal(e.target.value)} />
@@ -185,10 +189,13 @@ const Pets = () => {
         <div className='selection4'>
           <label>Gender:</label>
           <label>
-            <input type="radio" name="gender" value="Male" onChange={e => setSelectedGender(e.target.value)} /> Male
+            <input type="radio" name="gender" value="Male" onChange={e => setSelectedGender(e.target.value)} /> M
           </label>
           <label>
-            <input type="radio" name="gender" value="Female" onChange={e => setSelectedGender(e.target.value)} /> Female
+            <input type="radio" name="gender" value="Female" onChange={e => setSelectedGender(e.target.value)} /> F
+          </label>
+          <label>
+            <input type="radio" name="gender" value="" onChange={e => setSelectedGender(e.target.value)} /> Doesn't Matter
           </label>
         </div>
       </div>
@@ -199,12 +206,18 @@ const Pets = () => {
       </div>
       ) : (
         <div className='select-container'>
-          <div className='pets'>
-            {displayedPets.map(pet => <PetCard key={pet.id} pet={pet} />)}
-          </div>
+            <div className='pets'>
+            {displayedPets.map(pet => (
+              <div key={pet.id} style={{ width: '60%', display: 'block' }}>
+                <Link to={`/pets/${pet.type}/${pet.id}`}>
+                  <PetCard pet={pet} />
+                </Link>
+              </div>
+            ))}
+            </div>
           <div className="pagination">
             <button className='LRB' onClick={prevPage}>
-              <img src={leftArrow} alt="previous page" style={{height: '100%', width: '100%'}}/>
+              <img src={leftArrow} alt="previous page" style={{height: '60%', width: '60%'}}/>
             </button>
             {pages.map((page, index) => {
               if (page < 1 || page > 5) return null; // Don't display negative or over 5 page numbers
@@ -219,7 +232,7 @@ const Pets = () => {
               );
             })}
             <button className='LRB' onClick={nextPage}>
-              <img src={rightArrow} alt="next page" style={{height: '100%', width: '100%'}}/>
+              <img src={rightArrow} alt="next page" style={{height: '60%', width: '60%'}}/>
             </button>
           </div>
         </div>

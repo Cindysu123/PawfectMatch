@@ -1,58 +1,36 @@
-.find-pet-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 50px 0;
-  }
-  
-  .find-pet-section h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  .find-pet-section p {
-    font-size: 18px;
-    margin-bottom: 50px;
-  }
-  
-  .find-pet-section form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .find-pet-section form label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .find-pet-section form label select {
-    width: 200px;
-    height: 30px;
-    margin-top: 10px;
-  }
-  
-  .find-pet-section form input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #008CBA; /* Blue */
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 20px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  
-  .find-pet-section form input[type="submit"]:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
-  }
-  
+.find-pets-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 60px;
+  text-align: center;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.external-link {
+  margin-top: 40px;
+}
+
+.start-link {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #fdc072;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.start-link:hover {
+  background-color: #f9a72e;
+}

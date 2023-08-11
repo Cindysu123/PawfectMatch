@@ -28,15 +28,17 @@ const Header = () => {
   return (
     <header className={isScrolled ? "scrolled" : ""}>
       <nav>
-        <div className="logo">
-          <img src={icon} alt="Logo" className={isScrolled ? "logo-small" : "logo-big"} />
-        </div>
+        <NavLink to="/">
+          <div className="logo">
+            <img src={icon} alt="Logo" className={isScrolled ? "logo-small" : "logo-big"} />
+          </div>
+        </NavLink>
         <ul className="nav-links">
           <li className={isScrolled ? "logo-small" : "logo-big"}>
             <NavLink to="/" exact="true" className={activeLink === "/" ? "active-link" : ""}>Home</NavLink>
           </li>
           <li className={isScrolled ? "logo-small" : "logo-big"}>
-            <NavLink to="/pets" className={activeLink === "/pets" ? "active-link" : ""}>Pets</NavLink>
+            <NavLink to="/pets" className={location.pathname.startsWith("/pets") ? "active-link" : ""}>Pets</NavLink>
           </li >
           <li className={isScrolled ? "logo-small" : "logo-big"}>
             <NavLink to="/pet-care-guide" className={activeLink === "/pet-care-guide" ? "active-link" : ""}>Pet Care Guide</NavLink>
