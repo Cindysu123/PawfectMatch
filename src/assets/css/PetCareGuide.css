@@ -1,4 +1,3 @@
-/* PetCareGuide.css */
 .PetCareGuidecontainer {
   margin-top: 5vw;
   padding-top: 2vw;
@@ -21,7 +20,6 @@
   width: 100%;
   object-fit: cover;
   z-index: 0;
-  /* display: none; */
 }
 
 .guide-content {
@@ -91,11 +89,37 @@ h2 {
   width: 100%;
   padding: 2vw;
   box-sizing: border-box;
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition */
-  transform: translateY(18vh); /* Initial transform state */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: translateY(18vh);
 }
 
 .card-container a:hover p {
-  transform: translateY(0vh); /* Adjust the value to your desired rising effect */
-  background-color: rgba(0, 0, 0, 0.5); /* You can adjust the transparency if needed */
+  transform: translateY(0vh);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 767px) {
+  .PetCareGuidecontainer {
+    margin-top: 16vw;
+    padding: 2vw;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+  }
+
+  .card-container {
+    flex-direction: column;
+  }
+
+  .card-container a {
+    width: 90%;
+    margin: 2% auto;
+  }
+
+  .guide-content p {
+    font-size: 4vw;
+  }
+
+  .guide-content{
+    margin-top: 26vw;
+  }
 }

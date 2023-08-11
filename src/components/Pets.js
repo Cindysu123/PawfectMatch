@@ -8,88 +8,94 @@ import fetchAccessToken from './api';
 import paw from '../assets/img/paw_small.png';
 import leftArrow from '../assets/img/arrowL.png';
 import rightArrow from '../assets/img/arrowR.png';
-import loading from '../assets/img/magnifying-glass.gif'
+import loading from '../assets/img/magnifying-glass.gif';
 
 const Pets = () => {
+  // State for storing pets and filter options
   const [pets, setPets] = useState([]);
   const [selectedAge, setSelectedAge] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
-  const [currentPage, setCurrentPage] = useState(1); // Add this line
+  const [currentPage, setCurrentPage] = useState(1);
   const [breedOptions, setBreedOptions] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
   const [selectedBreedFinal, setSelectedBreedFinal] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  // Get pet type from URL parameters
   const { type } = useParams();
   const [selectedType, setSelectedType] = useState('');
 
+  // Update selected type when URL parameter changes
   useEffect(() => {
     setSelectedType(type || '');
   }, [type]);
-  
+
+  // Fetch pets based on selected filters
   useEffect(() => {
     const fetchPets = async () => {
-      setIsLoading(true); // set loading to true before starting the fetch
+      setIsLoading(true);
       const accessToken = await fetchAccessToken();
       let petImagesLoaded = 0;
       let page = 1;
       let petsWithImages = [];
-      let maxPets = 90; // maximum number of pets to fetch
-  
-      while(petsWithImages.length < maxPets) { 
+      let maxPets = 90;
+
+      while (petsWithImages.length < maxPets) {
         const params = new URLSearchParams({
           page: page,
           type: selectedType,
           age: selectedAge,
           size: selectedSize,
           gender: selectedGender,
-          breed: selectedBreed, // Add this line
+          breed: selectedBreed,
         });
-  
+
         const response = await fetch(`https://api.petfinder.com/v2/animals?${params.toString()}`, {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
           },
         });
-  
+
         const data = await response.json();
-  
+
         const pets = data.animals.filter(pet => pet.photos && pet.photos.length > 0);
-  
+
         for (const pet of pets) {
-          // check if pet already exists in petsWithImages
           const petExists = petsWithImages.find(existingPet => existingPet.id === pet.id);
-          // if it doesn't exist, add it
-          if (!petExists && petsWithImages.length < maxPets) { // add a check for maxPets here
+          if (!petExists && petsWithImages.length < maxPets) {
             petsWithImages.push(pet);
             petImagesLoaded += 1;
           }
         }
-  
+
         page += 1;
       }
-  
+
       setPets(petsWithImages);
       setIsLoading(false);
     };
-  
-  
+
     fetchPets();
   }, [currentPage, selectedType, selectedAge, selectedSize, selectedGender, selectedBreedFinal]);
-  
-  
 
+  // Reset current page when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedType, selectedAge, selectedSize, selectedGender, selectedBreed]);
 
-  // Update breed options when pets are fetched
+  // Update breed options based on fetched pets
   useEffect(() => {
     const breeds = Array.from(new Set(pets.map(pet => pet.breeds.primary)));
     setBreedOptions(breeds);
   }, [pets]);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  // Filtering pets based on selected filters
   const filteredPets = pets.filter(pet => {
     return (
       (selectedType === '' || pet.type === selectedType) &&
@@ -99,30 +105,16 @@ const Pets = () => {
       (selectedBreed === '' || pet.breeds.primary === selectedBreed)
     );
   });
-  
 
-  const nextPage = () => {
-    if (currentPage < 5) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  // Functions to handle pagination
+  const nextPage = () => { if (currentPage < 5) setCurrentPage(currentPage + 1); };
+  const prevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
 
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
-
-  const pages = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
-
+  // Button styling
   const buttonStyle = {
     backgroundImage: `url(${paw})`,
-    backgroundSize: 'contain', // Scale the image non-uniformly if necessary such that the image is as large as possible while not exceeding the button dimensions.
-    backgroundRepeat: 'no-repeat', // Do not repeat the background image.
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     color: 'black',
     border: 'none',
@@ -131,32 +123,24 @@ const Pets = () => {
     width: '5vw',
     height: '5vw'
   };
+  const inactiveButtonStyle = { ...buttonStyle, opacity: 0.5, width: '4vw', height: '4vw' };
 
-  const inactiveButtonStyle = {
-    ...buttonStyle, // inherit styles from buttonStyle
-    opacity: 0.5, // make button semi-transparent
-    width: '4vw',
-    height: '4vw'
-  };
-  
-  // Filter the pets to only include the 18 pets for the current page
+  // Define displayed pets based on current page
   const displayedPets = filteredPets.slice((currentPage - 1) * 18, currentPage * 18);
 
+  // Define pagination page numbers
+  const pages = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+
   return (
+    // JSX for rendering the component
     <div className='top-container'>
+      {/* Selection section for filters */}
       <div className="selection-section">
+        {/* Type and Breed selection */}
         <div className='selection1'>
           <label>Type:</label>
           <select name="type" value={selectedType} onChange={e => setSelectedType(e.target.value)}>
-              <option value="">All</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-              <option value="Rabbit">Rabbit</option>
-              <option value="Small & Furry">Small & Furry</option>
-              <option value="Horse">Horse</option>
-              <option value="Bird">Bird</option>
-              <option value="Scales, Fins & Other">Scales, Fins & Other</option>
-              <option value="Barnyard">Barnyard</option>
+            {/* Type options */}
           </select>
           <label>Breed:</label>
           <input type="text" list="breeds" id="breed" name="breed" value={selectedBreed} onChange={e => setSelectedBreed(e.target.value)} onBlur={e => setSelectedBreedFinal(e.target.value)} />
@@ -166,6 +150,7 @@ const Pets = () => {
             ))}
           </datalist>
         </div>
+        {/* Age selection */}
         <div className='selection2'>
           <label>Age:</label>
           <select name="age" onChange={e => setSelectedAge(e.target.value)}>
@@ -176,6 +161,7 @@ const Pets = () => {
             <option value="Senior">Senior</option>
           </select>
         </div>
+        {/* Size selection */}
         <div className='selection3'>
           <label>Size:</label>
           <select name="size" onChange={e => setSelectedSize(e.target.value)}>
@@ -186,6 +172,7 @@ const Pets = () => {
             <option value="Extra Large">Extra Large</option>
           </select>
         </div>
+        {/* Gender selection */}
         <div className='selection4'>
           <label>Gender:</label>
           <label>
@@ -199,14 +186,16 @@ const Pets = () => {
           </label>
         </div>
       </div>
+      {/* Loading section */}
       {isLoading ? (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' ,alignItems: 'center'}}>
-        <div>Loading...</div>
-        <img src={loading} alt="Loading..." width="100px" height="100px" />
-      </div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignItems: 'center' }}>
+          <div>Loading...</div>
+          <img src={loading} alt="Loading..." width="100px" height="100px" />
+        </div>
       ) : (
         <div className='select-container'>
-            <div className='pets'>
+          {/* Displayed pets */}
+          <div className='pets'>
             {displayedPets.map(pet => (
               <div key={pet.id} style={{ width: '60%', display: 'block' }}>
                 <Link to={`/pets/${pet.type}/${pet.id}`}>
@@ -214,16 +203,19 @@ const Pets = () => {
                 </Link>
               </div>
             ))}
-            </div>
+          </div>
+          {/* Pagination */}
           <div className="pagination">
+            {/* Previous page button */}
             <button className='LRB' onClick={prevPage}>
-              <img src={leftArrow} alt="previous page" style={{height: '60%', width: '60%'}}/>
+              <img src={leftArrow} alt="previous page" style={{ height: '60%', width: '60%' }} />
             </button>
+            {/* Page numbers */}
             {pages.map((page, index) => {
               if (page < 1 || page > 5) return null; // Don't display negative or over 5 page numbers
               return (
-                <button  className='pawb'
-                  key={index} 
+                <button className='pawb'
+                  key={index}
                   onClick={() => setCurrentPage(page)}
                   style={page === currentPage ? buttonStyle : inactiveButtonStyle}
                 >
@@ -231,13 +223,15 @@ const Pets = () => {
                 </button>
               );
             })}
+            {/* Next page button */}
             <button className='LRB' onClick={nextPage}>
-              <img src={rightArrow} alt="next page" style={{height: '60%', width: '60%'}}/>
+              <img src={rightArrow} alt="next page" style={{ height: '60%', width: '60%' }} />
             </button>
           </div>
         </div>
       )}
-      <Footer/>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

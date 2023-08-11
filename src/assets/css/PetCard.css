@@ -24,7 +24,7 @@
 }
 
 .pet-info {
-  padding: 0.5vw; /* Reduced padding to move elements closer */
+  padding: 0.5vw;
 }
 
 .pet-info h2 {
@@ -40,16 +40,16 @@
   padding: 0.4vw;
   border-radius: 0.5vw;
   margin-right: 0.5vw;
-  margin-bottom: 0.2vw; /* Reduced margin to move elements closer */
+  margin-bottom: 0.2vw;
 }
 
 .pet-info p.breeds {
-  margin-top: 0.2vw; /* Reduced margin to move elements closer */
+  margin-top: 0.2vw;
 }
 
 a {
-  text-decoration: none; /* Removes underline */
-  color: inherit; /* Inherit the color from the parent element */
+  text-decoration: none;
+  color: inherit;
 }
 
 

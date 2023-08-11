@@ -1,8 +1,6 @@
-// 1. Import statements
+// Import required dependencies, styling, and images
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-// 2. Asset Imports
 import '../assets/css/Home.css';
 import Footer from './Footer';
 import v1 from '../assets/img/paws/Vector 1.png';
@@ -15,16 +13,15 @@ import img3 from '../assets/img/image3.png';
 import bg1 from '../assets/img/bg1.png';
 import bg2 from '../assets/img/bg2.png';
 
-// 3. Component Function
+// Define the Home component
 const Home = () => {
-  // 4. State Variables
+  // State variables to manage scrolling effects
   const [scrolled, setScrolled] = useState(false);
   const [sectionScrolled, setSectionScrolled] = useState(false);
-
   const [scrolled2, setScrolled2] = useState(false);
   const [sectionScrolled2, setSectionScrolled2] = useState(false);
 
-  // 5. UseEffect Hooks
+  // Effect to handle scrolling for the first image
   useEffect(() => {
     const onScroll = () => {
       const isScrolled = window.scrollY > 200;
@@ -36,6 +33,7 @@ const Home = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [scrolled]);
 
+  // Effect to handle scrolling for a section
   useEffect(() => {
     const onScroll = () => {
       const isScrolled = window.scrollY > 600;
@@ -47,6 +45,7 @@ const Home = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [sectionScrolled]);
 
+  // Effect to handle scrolling for the second image
   useEffect(() => {
     const onScroll = () => {
       const isScrolled = window.scrollY > 100;
@@ -57,7 +56,8 @@ const Home = () => {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, [scrolled2]);
-  
+
+  // Effect to handle scrolling for the second section
   useEffect(() => {
     const onScroll = () => {
       const isScrolled = window.scrollY > 300;
@@ -69,7 +69,6 @@ const Home = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [sectionScrolled2]);
 
-  // 6. Render
   return (
     <div className='home'>
       <div className="home-container">
@@ -155,4 +154,5 @@ const Home = () => {
   );
 };
 
+// Export the component for use in other parts of the application
 export default Home;

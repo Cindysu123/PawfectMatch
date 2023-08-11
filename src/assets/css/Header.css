@@ -52,7 +52,7 @@ nav {
 
 .nav-links li {
   margin: 0;
-  padding: 1vw; /* You can adjust the value as per your need */
+  padding: 1vw;
   transition: transform 0.3s ease;
 }
 
@@ -70,13 +70,7 @@ nav {
   transition: color 0.3s ease;
   padding: 0.5vw;
   border-radius: 0.6vw;
-  font-size: 1.2vw; /* Set the font size in vw */
-}
-
-@media screen and (max-width: 600px) {
-  .nav-links li a {
-    font-size: 2.5vw; /* You can adjust the font size for smaller screens */
-  }
+  font-size: 1.2vw;
 }
 
 
@@ -85,22 +79,45 @@ nav {
   background-color: #e4996d;
 }
 
+.logo img {
+  width: 20vw;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo img.logo-big {
+  transform: scale(1.1);
+}
+
+.logo img.logo-small {
+  transform: scale(1);
+}
+
 @media screen and (max-width: 600px) {
   header {
-    position: absolute !important;
-    top: 0;
+    padding: 4vw;
+  }
+
+  .logo img {
+    width: 20vw;
   }
 
   .nav-links {
-    flex-direction: column;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .nav-links li {
-    padding: 0.5vw;
+    padding: 1vw 0 !important;
   }
-}
 
-.nav-links .active-link {
-  color: white;
-  background-color: #e4996d;
+  .nav-links li a {
+    font-size: 3.5vw !important;
+    padding: 0.8vw !important;
+  }
+
+  .nav-links li a:hover {
+    background-color: #e4996d !important;
+    color: white !important;
+  }
 }

@@ -8,6 +8,11 @@
     box-shadow: 0 0 1.11vw rgba(0, 0, 0, 0.1);
 }
 
+body {
+  font-size: 1.2vw;
+}
+
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -101,7 +106,7 @@
 .pet-name {
     text-align: center;
     color: #333;
-    font-size: 2vw; /* Text size in vw */
+    font-size: 2vw;
 }
   
   .pet-main-info {
@@ -237,3 +242,70 @@
   .Loading{
     background-color: white;
   }
+  
+@media screen and (max-width: 768px) {
+  .pet-details-container {
+    margin-top: 10vh;
+    max-width: 95vw;
+    padding: 2vw;
+    border-radius: 2vw;
+  }
+
+  .pet-main-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pet-image-container {
+    height: auto;
+  }
+
+  .pet-basic-info {
+    flex: unset;
+    margin-top: 10px;
+  }
+
+  .media-button {
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .media-button.active-page,
+  .media-button:hover {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .arrow-button {
+    width: 2vw;
+    height: 4vw;
+  }
+
+  .arrow-button:hover, .Right:hover {
+    width: 2.4vw;
+    height: 4.8vw;
+  }
+
+  .pet-name {
+    font-size: 5vw;
+  }
+
+  .pet-attributes {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pet-attributes-group-left, .pet-attributes-group-right {
+    width: 100%;
+  }
+
+  .pet-environment-description-group,
+  .pet-contact-info-group {
+    margin-top: 10px;
+  }
+
+  .similar-pets-container {
+    flex-direction: column;
+  }
+}

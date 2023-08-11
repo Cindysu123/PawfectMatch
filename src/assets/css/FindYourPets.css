@@ -1,36 +1,46 @@
 .find-pets-container {
-  max-width: 600px;
+  max-width: 80vw;
   margin: 0 auto;
-  padding: 20px;
-  padding-top: 60px;
+  padding: 2vw;
+  padding-top: 6vw;
   text-align: center;
 }
 
 .title {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 3.6vw;
+  margin-bottom: 2vw;
 }
 
 .description {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 1.8vw;
+  margin-bottom: 3vw;
 }
 
 .external-link {
-  margin-top: 40px;
+  margin-top: 4vw;
 }
 
 .start-link {
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 20px;
+  padding: 1vw 2vw;
+  font-size: 2vw;
   text-decoration: none;
   color: #fff;
   background-color: #fdc072;
-  border-radius: 5px;
+  border-radius: 0.5vw;
   transition: background-color 0.3s ease;
 }
 
 .start-link:hover {
   background-color: #f9a72e;
+}
+
+@media screen and (max-width: 600px) {
+  .find-pets-container {
+    max-width: 95vw;
+    margin: 0 auto;
+    padding: 3vw;
+    padding-top: 10vw;
+    text-align: center;
+  }
 }

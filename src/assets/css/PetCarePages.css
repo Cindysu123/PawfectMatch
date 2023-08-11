@@ -1,51 +1,81 @@
 .container {
-    margin-top: 60px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Arial, sans-serif;
-    border-radius: 20px;
+  margin-top: 3vw;
+  max-width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Arial, sans-serif;
+  border-radius: 2vw;
+  padding: 1.5vw;
+}
+
+.container h1, .container h3, .container p {
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.container h1 {
+  color: #333;
+  margin-bottom: 2vw;
+  font-size: 2.5vw;
+}
+
+.container h3 {
+  color: #555;
+  margin: 2vw 0;
+  font-size: 2vw;
+}
+
+.container p {
+  line-height: 1.5;
+  margin-bottom: 2vw;
+  color: #666;
+  font-size: 1.5vw;
+}
+
+.container h3:last-of-type,
+.container p:last-of-type {
+  margin-bottom: 0;
+}
+
+.container h3:last-of-type {
+  font-weight: bold;
+}
+
+.container .back-button {
+  display: inline-block;
+  padding: 1vw 1.5vw;
+  margin-bottom: 2vw;
+  background-color: #e4996d;
+  color: #333;
+  text-decoration: none;
+  border-radius: 0.5vw;
+  font-size: 1.5vw;
+}
+
+.container .back-button:hover {
+  background-color: #b87854;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 6vw;
   }
-  
+
   .container h1 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 3vw;
   }
-  
+
   .container h3 {
-    color: #555;
-    margin: 20px 0;
-    font-size: 18px;
+    font-size: 2.5vw;
   }
-  
+
   .container p {
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: #666;
+    font-size: 2vw;
   }
-  
-  .container h3:last-of-type,
-  .container p:last-of-type {
-    margin-bottom: 0;
-  }
-  
-  .container h3:last-of-type {
-    font-weight: bold;
-  }  
 
   .container .back-button {
-    display: inline-block;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    background-color: #e4996d;
-    color: #333;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 1vw 1.5vw;
+    font-size: 1.5vw;
   }
-  
-  .container .back-button:hover {
-    background-color: #b87854;
-    text-decoration: none;
-  }
+}
