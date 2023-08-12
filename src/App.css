@@ -3,7 +3,7 @@
 }
 
 body, .App {
-  color: rgb(30, 30, 30);
+  color: rgb(57, 57, 57) !important;
 }
 
 .App-logo {
@@ -65,8 +65,8 @@ button {
   background-image: url('./assets/img/paw2.png');
   background-size: contain;
   background-repeat: no-repeat;
-  height: 3vw;
-  width: 3vw;
+  height: 2vw;
+  width: 2vw;
   position: fixed;
   pointer-events: none;
   transition: width 0.2s, height 0.2s;
@@ -74,7 +74,17 @@ button {
 }
 
 .cursor-clicked {
-  width: 3.4vw;
-  height: 3.4vw;
+  width: 2.4vw;
+  height: 2.4vw;
 }
+
+.selection-section select,
+.selection-section input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
 

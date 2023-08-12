@@ -21,6 +21,8 @@ const Pets = () => {
   const [selectedBreed, setSelectedBreed] = useState('');
   const [selectedBreedFinal, setSelectedBreedFinal] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [petTypes, setPetTypes] = useState([]);
+
 
   // Get pet type from URL parameters
   const { type } = useParams();
@@ -78,6 +80,7 @@ const Pets = () => {
 
     fetchPets();
   }, [currentPage, selectedType, selectedAge, selectedSize, selectedGender, selectedBreedFinal]);
+    
 
   // Reset current page when filters change
   useEffect(() => {
@@ -140,7 +143,15 @@ const Pets = () => {
         <div className='selection1'>
           <label>Type:</label>
           <select name="type" value={selectedType} onChange={e => setSelectedType(e.target.value)}>
-            {/* Type options */}
+            <option value="">All</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Rabbit">Rabbit</option>
+            <option value="Small & Furry">Small & Furry</option>
+            <option value="Horse">Horse</option>
+            <option value="Bird">Bird</option>
+            <option value="Scales, Fins & Other">Scales, Fins & Other</option>
+            <option value="Barnyard">Barnyard</option>
           </select>
           <label>Breed:</label>
           <input type="text" list="breeds" id="breed" name="breed" value={selectedBreed} onChange={e => setSelectedBreed(e.target.value)} onBlur={e => setSelectedBreedFinal(e.target.value)} />

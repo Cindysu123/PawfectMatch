@@ -1,5 +1,5 @@
 // Import required dependencies, styling, and assets
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import '../assets/css/Header.css';
 import icon from '../assets/img/icon.png';
@@ -36,6 +36,33 @@ const Header = () => {
     };
   }, [activeLink, location.pathname]);
 
+  // Ref to keep track of the active navigation link
+  const activeLinkRef = useRef(null);
+
+  // Function to handle link click
+  const handleLinkClick = (e) => {
+    // Reset the 'active-link-style' class for the previous active link
+    if (activeLinkRef.current) {
+      activeLinkRef.current.classList.remove('active-link-style');
+    }
+
+    // Set the 'active-link-style' class for the clicked link
+    e.currentTarget.classList.add('active-link-style');
+
+    // Update the ref to point to the clicked link
+    activeLinkRef.current = e.currentTarget;
+  };
+
+  // Use the useEffect hook to add and remove scroll listener
+  useEffect(() => {
+    window.addEventListener('scroll', checkScroll);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+    };
+  }, []);
+
   // Return the JSX for rendering the header
   return (
     <header className={isScrolled ? "scrolled" : ""}>
@@ -47,18 +74,17 @@ const Header = () => {
           </div>
         </NavLink>
         <ul className="nav-links">
-          {/* Navigation links with dynamic classes based on scroll and active state */}
           <li className={isScrolled ? "logo-small" : "logo-big"}>
-            <NavLink to="/" className={activeLink === "/" ? "active-link" : ""}>Home</NavLink>
+            <NavLink to="/" onClick={handleLinkClick} className={location.pathname === "/" ? "active-link-style" : ""}>Home</NavLink>
           </li>
           <li className={isScrolled ? "logo-small" : "logo-big"}>
-            <NavLink to="/pets" className={location.pathname.startsWith("/pets") ? "active-link" : ""}>Pets</NavLink>
+            <NavLink to="/pets" onClick={handleLinkClick} className={location.pathname === "/pets" ? "active-link-style" : ""}>Pets</NavLink>
           </li>
           <li className={isScrolled ? "logo-small" : "logo-big"}>
-            <NavLink to="/pet-care-guide" className={activeLink === "/pet-care-guide" ? "active-link" : ""}>Pet Care Guide</NavLink>
+            <NavLink to="/pet-care-guide" onClick={handleLinkClick} className={location.pathname === "/pet-care-guide" ? "active-link-style" : ""}>Pet Care Guide</NavLink>
           </li>
           <li className={isScrolled ? "logo-small" : "logo-big"}>
-            <NavLink to="/find-your-pets" className={activeLink === "/find-your-pets" ? "active-link" : ""}>Find Your Pets</NavLink>
+            <NavLink to="/find-your-pets" onClick={handleLinkClick} className={location.pathname === "/find-your-pets" ? "active-link-style" : ""}>Find Your Pets</NavLink>
           </li>
         </ul>
       </nav>
