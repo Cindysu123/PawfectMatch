@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/PawfectMatch/static/css/main.6f01fd0c.css",
-    "main.js": "/PawfectMatch/static/js/main.060a6285.js",
+    "main.css": "/PawfectMatch/static/css/main.a0fa37ca.css",
+    "main.js": "/PawfectMatch/static/js/main.5a0904b3.js",
     "static/js/787.da67e577.chunk.js": "/PawfectMatch/static/js/787.da67e577.chunk.js",
+    "static/media/magnifying-glass.gif": "/PawfectMatch/static/media/magnifying-glass.f91f44ea89806881509f.gif",
     "static/media/image3.png": "/PawfectMatch/static/media/image3.2e03f1912be710fdf7a9.png",
     "static/media/image 21.png": "/PawfectMatch/static/media/image 21.9440ec87d2ea23426212.png",
     "static/media/image 24.png": "/PawfectMatch/static/media/image 24.69f0158c924d764c80cd.png",
@@ -16,12 +17,12 @@
     "static/media/footprint.png": "/PawfectMatch/static/media/footprint.0a9f7ff8da7bf45b2516.png",
     "static/media/bg1.png": "/PawfectMatch/static/media/bg1.b843f02d4d4334d3789c.png",
     "index.html": "/PawfectMatch/index.html",
-    "main.6f01fd0c.css.map": "/PawfectMatch/static/css/main.6f01fd0c.css.map",
-    "main.060a6285.js.map": "/PawfectMatch/static/js/main.060a6285.js.map",
+    "main.a0fa37ca.css.map": "/PawfectMatch/static/css/main.a0fa37ca.css.map",
+    "main.5a0904b3.js.map": "/PawfectMatch/static/js/main.5a0904b3.js.map",
     "787.da67e577.chunk.js.map": "/PawfectMatch/static/js/787.da67e577.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f01fd0c.css",
-    "static/js/main.060a6285.js"
+    "static/css/main.a0fa37ca.css",
+    "static/js/main.5a0904b3.js"
   ]
 }
