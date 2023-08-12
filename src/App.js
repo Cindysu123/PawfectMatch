@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -11,15 +11,38 @@ import HealthAndVetCare from './components/HealthAndVetCare';
 import PositiveReinforcementTraining from './components/PositiveReinforcementTraining';
 import UnderstandingPetBehavior from './components/UnderstandingPetBehavior';
 import './App.css';
-import paw from './assets/img/paw_small.png';
 
-const App = () => {
+function App() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isClicked, setIsClicked] = useState(false);
+
   useEffect(() => {
-    document.body.style.cursor = `url(${paw}), auto`;
+    const mouseMove = e => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const mouseDown = () => {
+      setIsClicked(true);
+    };
+
+    const mouseUp = () => {
+      setIsClicked(false);
+    };
+
+    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousedown", mouseDown);
+    window.addEventListener("mouseup", mouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousedown", mouseDown);
+      window.removeEventListener("mouseup", mouseUp);
+    };
   }, []);
 
   return (
-    <div style={{cursor: `url(${paw}), auto`}}>
+    <div className="App">
+      <div className={`cursor ${isClicked ? 'cursor-clicked' : ''}`} style={{ left: mousePosition.x, top: mousePosition.y }}/>
       <Router>
         <Header />
         <Routes>

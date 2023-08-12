@@ -1,6 +1,8 @@
 // Import required dependencies, styling, and images
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../assets/css/Home.css';
 import Footer from './Footer';
 import v1 from '../assets/img/paws/Vector 1.png';
@@ -13,6 +15,9 @@ import img3 from '../assets/img/image3.png';
 import bg1 from '../assets/img/bg1.png';
 import bg2 from '../assets/img/bg2.png';
 
+gsap.registerPlugin(ScrollTrigger);
+
+
 // Define the Home component
 const Home = () => {
   // State variables to manage scrolling effects
@@ -20,6 +25,9 @@ const Home = () => {
   const [sectionScrolled, setSectionScrolled] = useState(false);
   const [scrolled2, setScrolled2] = useState(false);
   const [sectionScrolled2, setSectionScrolled2] = useState(false);
+  const imgRef = useRef(null);
+  const img2Ref = useRef(null);
+  const img3Ref = useRef(null);
 
   // Effect to handle scrolling for the first image
   useEffect(() => {
@@ -69,6 +77,55 @@ const Home = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [sectionScrolled2]);
 
+// Animation for imgRef
+useEffect(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: imgRef.current,
+      start: 'top 80%',
+    },
+  });
+
+  // Curve animation
+  tl.to(imgRef.current, { x: '-75%', y: '-22%', duration: 0.12 })
+    .to(imgRef.current, { x: '-50%', y: '-15%', duration: 0.12 })
+    .to(imgRef.current, { x: '-25%', y: '-7%', duration: 0.12 })
+    .to(imgRef.current, { x: '0%', y: '0%', duration: 0.12 })
+    .to(imgRef.current, { opacity: 1, duration: 1 });
+}, []);
+
+// Animation for img2Ref
+useEffect(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: img2Ref.current,
+      start: 'top 80%',
+    },
+  });
+
+  // Curve animation
+  tl.to(img2Ref.current, { x: '-105%', y: '-82%', duration: 0.245 })
+    .to(img2Ref.current, { x: '-70%', y: '-55%', duration: 0.245 })
+    .to(img2Ref.current, { x: '-35%', y: '-27%', duration: 0.245 })
+    .to(img2Ref.current, { x: '0%', y: '0%', duration: 0.245 })
+    .to(img2Ref.current, { opacity: 1, duration: 1 });
+}, []);
+
+// Animation for img3Ref
+useEffect(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: img3Ref.current,
+      start: 'top 80%',
+    },
+  });
+
+  // Curve animation
+  tl.to(img3Ref.current, { x: '0%', y: '0%', duration: 1 })
+    .to(img3Ref.current, { opacity: 1, duration: 1 });
+}, []);
+
+
   return (
     <div className='home'>
       <div className="home-container">
@@ -93,22 +150,22 @@ const Home = () => {
               <p className="pet-item">Bird</p>
             </div>
             <Link to="/pets/Rabbit">
-              <div className={`image img2 ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`}>
-                <img src={v2} alt="Vector 2"/>
-              </div>
+            <div className={`image img2 ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`}>
+              <img src={v2} alt="Vector 2"/>
+            </div>
             </Link>
             <Link to="/pets/Dog">
-                <div className={`image img3 ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`}>
-                    <img src={v3} alt="Vector 3"/>
-                </div>
+            <div className={`image img3 initial-position ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`} ref={imgRef}>
+              <img src={v3} alt="Vector 3"/>
+            </div>
             </Link>
             <Link to="/pets/Bird">
-              <div className={`image img4 ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`}>
+              <div className={`image img4 initial-position ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`} ref={img2Ref}>
                 <img src={v4} alt="Vector 4"/>
               </div>
             </Link>
             <Link to="/pets/Cat">
-              <div className={`image img5 ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`}>
+              <div className={`image img5 initial-position ${scrolled ? 'scrolled' : ''} ${scrolled2 ? 'scrolled2' : ''}`} ref={img3Ref}>
                 <img src={v5} alt="Vector 5"/>
               </div>
             </Link>

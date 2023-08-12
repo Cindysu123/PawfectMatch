@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body, .App {
+  color: rgb(30, 30, 30);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -48,3 +52,29 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  cursor: none;
+}
+
+button {
+  cursor: none !important;
+}
+
+.cursor {
+  background-image: url('./assets/img/paw2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 3vw;
+  width: 3vw;
+  position: fixed;
+  pointer-events: none;
+  transition: width 0.2s, height 0.2s;
+  z-index: 999;
+}
+
+.cursor-clicked {
+  width: 3.4vw;
+  height: 3.4vw;
+}
+

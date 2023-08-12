@@ -20,11 +20,12 @@
 }
 
 .p1 {
+  text-align: left;
   position: absolute;
   width: 60vw;
-  font-size: 2vw;
+  font-size: 1.8vw;
   z-index: 3 !important;
-  top: 10vw;
+  top: 14vw;
 }
 
 .selection-section {
@@ -94,7 +95,7 @@
 }
 .img1 img{
   width: 26vw;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .b1{
@@ -105,9 +106,9 @@
   border: none;
   color: white;
   font-size: 1.6vw;
-  cursor: pointer;
   position: absolute;
   top: 24vw;
+  left: 4vw;
 }
 
 .img2 {
@@ -128,19 +129,19 @@
 }
 
 .img2.scrolled {
-  top: 44.7vw;
+  top: 50.7vw;
   left: 52vw;
 }
 .img3.scrolled {
-  top: 44.7vw;
+  top: 50.7vw;
   left: 7.4vw;
 }
 .img4.scrolled {
-  top: 46vw;
+  top: 52vw;
   left: 75vw;
 }
 .img5.scrolled {
-  top: 42.4vw;
+  top: 48.4vw;
   left: 30vw;
 }
 
@@ -187,7 +188,9 @@
 
 
 .h1{
-  padding-top: 2vw;
+  text-align: left;
+  font-weight: bold !important;
+  margin-top: 8vw !important;
 }
 
 .selection-section{
@@ -244,7 +247,6 @@
   border: none;
   color: white;
   font-size: 1.6vw;
-  cursor: pointer;
   text-align: center;
 }
 
@@ -300,7 +302,6 @@
   border: none;
   color: white;
   font-size: 1.6vw;
-  cursor: pointer;
   text-align: center;
 }
 
@@ -454,3 +455,17 @@
     padding: 6vw;
   }
 }
+
+/* animation */
+.img3.initial-position {
+  transform: translate(-100%, -30%);
+}
+
+.img4.initial-position {
+  transform: translate(-140%, -110%);
+}
+
+.img5.initial-position {
+  transform: translate(-70%, -160%);
+}
+
