@@ -36,7 +36,7 @@ const Pets = () => {
       let petImagesLoaded = 0;
       let page = 1;
       let petsWithImages = [];
-      let maxPets = 27;
+      let maxPets = 3;
 
       while (petsWithImages.length < maxPets) {
         const params = new URLSearchParams({
@@ -70,7 +70,7 @@ const Pets = () => {
         page += 1;
       }
 
-      setPets(petsWithImages);
+      setPets(pets);
       setIsLoading(false);
     };
 
