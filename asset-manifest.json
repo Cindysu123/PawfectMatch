@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PawfectMatch/static/css/main.e2cbd17d.css",
-    "main.js": "/PawfectMatch/static/js/main.835e90df.js",
+    "main.js": "/PawfectMatch/static/js/main.1619212b.js",
     "static/js/787.da67e577.chunk.js": "/PawfectMatch/static/js/787.da67e577.chunk.js",
     "static/media/magnifying-glass.gif": "/PawfectMatch/static/media/magnifying-glass.f91f44ea89806881509f.gif",
     "static/media/image3.png": "/PawfectMatch/static/media/image3.2e03f1912be710fdf7a9.png",
@@ -19,11 +19,11 @@
     "static/media/bg1.png": "/PawfectMatch/static/media/bg1.b843f02d4d4334d3789c.png",
     "index.html": "/PawfectMatch/index.html",
     "main.e2cbd17d.css.map": "/PawfectMatch/static/css/main.e2cbd17d.css.map",
-    "main.835e90df.js.map": "/PawfectMatch/static/js/main.835e90df.js.map",
+    "main.1619212b.js.map": "/PawfectMatch/static/js/main.1619212b.js.map",
     "787.da67e577.chunk.js.map": "/PawfectMatch/static/js/787.da67e577.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e2cbd17d.css",
-    "static/js/main.835e90df.js"
+    "static/js/main.1619212b.js"
   ]
 }
