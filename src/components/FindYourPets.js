@@ -1,27 +1,34 @@
-// Import required dependencies and styling
-import React from 'react'; // Import React for creating components
-import '../assets/css/FindYourPets.css'; // Import the specific styling for this component
+// FindYourPets.js
+import React, { useState } from 'react';
+import '../assets/css/FindYourPets.css';
+import Modal from './Modal';
 
-// Define the FindYourPets component
+import Footer from './Footer';
+
 const FindYourPets = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <div className="find-pets-container"> {/* Main container for the FindYourPets component */}
+    <div className="find-pets-container fade-in-top-element">
+      <div className="title">Find Your Perfect Pet</div>
+      <div className="description">Answer a few questions to discover the ideal pet that suits your lifestyle and preferences.</div>
+      <button onClick={openModal} className="start-link">Start Here</button>
       
-      {/* Title of the page */}
-      <h1 className="title">Find Your Perfect Pet</h1>
-
-      {/* Description providing context for the user */}
-      <p className="description">Answer a few questions to discover the ideal pet that suits your lifestyle and preferences.</p>
-
-      {/* External link to start the pet finding process */}
-      <div className="external-link">
-        <a href="https://cindysu123.github.io/Narrative-Visualization/" target="_blank" rel="noopener noreferrer" className="start-link">
-          Start Here
-        </a>
-      </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <iframe 
+          src="https://cindysu123.github.io/Narrative-Visualization/" 
+          title="External Content" 
+          width="100%" 
+          height="500px"
+          style={{border: 'none'}}
+        ></iframe>
+      </Modal>
+      <Footer />
     </div>
   );
 };
 
-// Export the component for use in other parts of the application
 export default FindYourPets;

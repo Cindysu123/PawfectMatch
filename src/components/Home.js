@@ -129,7 +129,7 @@ useEffect(() => {
   return (
     <div className='home'>
       <div className="home-container">
-        <div className='head'>
+        <div className='head fade-in-left-element'>
           <h1 className='h1'>Meet Your New Furry Friend!</h1>
           <p className='p1'>Welcome to PawfectMatch, where you can find a loving companion for life! Browse through our featured pets and discover their unique personalities and stories. Begin your journey by exploring these adorable faces!</p>
           <div className={`image img1`}>

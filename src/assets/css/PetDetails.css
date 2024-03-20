@@ -1,11 +1,9 @@
 .pet-details-container {
-    margin-top: 16vh !important;
+    margin-top: 10vh !important;
     max-width: 80vw;
     margin: 0 auto;
     padding: 1.11vw;
-    background-color: #f9f9f9;
     border-radius: 1.11vw;
-    box-shadow: 0 0 1.11vw rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -103,20 +101,13 @@ body {
 }
 
 
-.pet-name {
-    text-align: center;
-    color: #333;
-    font-size: 2vw;
-}
-  
-  .pet-main-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  .pet-name {
+      text-align: center;
+      font-size: 2vw;
   }
   
   .pet-image-container {
-    height: 45%;
+    width: 40vw;
     text-align: center;
   }
   
@@ -124,13 +115,18 @@ body {
     max-width: 100%;
     border-radius: 10px;
     width: 100%;
+    width: 36vw;
+    height: 36vw;
+    object-fit: cover;
+    object-position: center;
   }
   
   .pet-basic-info {
     flex: 1;
-    padding: 10px;
-    background-color: #fcf2dc;
-    border-radius: 10px;
+    background-color: #e8d4c9;
+    border-radius: 1vw;
+    color: #301A0D;
+    text-align: left;
   }
   
   .petfinder-link {
@@ -151,16 +147,26 @@ body {
   }
 
   .pet-attributes {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
     margin-top: 5vh;
   }
   
   .pet-attributes-group-left{
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: 2vw;
+  }
+
+  .pet-attributes-group-right{
+    margin-top: 2vw;
+    margin-left: 2vw;
+  }
+
+  .pet-attributes-group-left img{
+    width: 2vw;
+    height: 2vw;
+  }
+
+  .pet-attributes-group-right img{
+    width: 2vw;
+    height: 2vw;
   }
 
   .pet-attributes-group-left{
@@ -171,7 +177,7 @@ body {
     width: 60%;
   }
 
-  button {
+  .pet-details-container button {
     padding: 10px;
     margin: 5px;
     background-color: #e4996d;
@@ -228,6 +234,10 @@ body {
   
   .pet-description {
     margin: 10px 0;
+  }
+
+  .pet-description img{
+    width: 2vw;
   }
   
   .explore-more-pets {

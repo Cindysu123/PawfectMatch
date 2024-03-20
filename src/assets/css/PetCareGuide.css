@@ -1,11 +1,7 @@
 .PetCareGuidecontainer {
-  margin-top: 5vw;
-  padding-top: 2vw;
-  padding-left: 8vw;
-  padding-right: 8vw;
-  padding-bottom: 2vw;
-  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
   position: relative;
+  text-align: left;
 }
 
 .container11, .container22{
@@ -14,7 +10,7 @@
 
 .footprint {
   position: fixed;
-  top: 0;
+  top: 3vw;
   left: 0;
   height: 100%;
   width: 100%;
@@ -24,10 +20,10 @@
 
 .guide-content {
   position: relative;
-  padding: 1.6vw;
+  padding: 2vw 12vw;
   background-color: #fcf2dc;
-  border-radius: 2vw;
   z-index: 1;
+  padding-bottom: 20vw;
 }
 
 .h1 {
@@ -46,9 +42,7 @@ h2 {
 .card-container {
   position: relative;
   margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 32vw;
 }
 
 .card-container a {
@@ -56,20 +50,14 @@ h2 {
   text-decoration: none;
   color: inherit;
   display: block;
-  width: 45%;
-  height: 30%;
-  margin: 1% 0;
-  border-radius: 3vw;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 32vw;
+  height: 26vw;
+  border-radius: 1vw;
   transition: 0.3s;
   overflow: hidden;
   z-index: 1;
   background-color: white;
-  border: 1px solid rgb(164, 164, 164);
-}
-
-.card-container a:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid black;
 }
 
 .card-container a h3 {
@@ -84,7 +72,7 @@ h2 {
   position: absolute;
   margin-bottom: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0);
   color: white;
   width: 100%;
   padding: 2vw;
@@ -122,4 +110,14 @@ h2 {
   .guide-content{
     margin-top: 26vw;
   }
+}
+
+.read-more-btn:hover{
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
+.read-more-btn{
+  transition: all 0.3s;
+  background:#E4996D
 }

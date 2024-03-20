@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: 'OrelegaOne';
+  src: url('assets/fonts/OrelegaOne-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'OrelegaOne', sans-serif;
+  line-height: 2vw;
+}
+
 body, .App {
   color: rgb(57, 57, 57) !important;
 }
@@ -53,31 +63,6 @@ body, .App {
   }
 }
 
-* {
-  cursor: none;
-}
-
-button {
-  cursor: none !important;
-}
-
-.cursor {
-  background-image: url('./assets/img/paw2.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 2vw;
-  width: 2vw;
-  position: fixed;
-  pointer-events: none;
-  transition: width 0.2s, height 0.2s;
-  z-index: 999;
-}
-
-.cursor-clicked {
-  width: 2.4vw;
-  height: 2.4vw;
-}
-
 .selection-section select,
 .selection-section input[type="text"] {
   padding: 8px;
@@ -87,4 +72,38 @@ button {
   font-size: 14px;
 }
 
+@keyframes fadeInLeft {
+  from {
+      opacity: 0;
+      transform: translateX(-100px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
 
+.fade-in-left-element {
+  animation: fadeInLeft 1s ease-out forwards;
+  position: relative;
+}
+
+@keyframes fadeInTop {
+  from {
+      opacity: 0;
+      transform: translateY(-100px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.fade-in-top-element {
+  animation: fadeInTop 0.5s ease-out forwards;
+  position: relative;
+}
+
+button {
+  cursor: pointer;
+}

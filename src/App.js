@@ -42,7 +42,6 @@ function App() {
 
   return (
     <div className="App">
-      <div className={`cursor ${isClicked ? 'cursor-clicked' : ''}`} style={{ left: mousePosition.x, top: mousePosition.y }}/>
       <Router>
         <Header />
         <Routes>

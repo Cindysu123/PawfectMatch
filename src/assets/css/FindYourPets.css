@@ -1,8 +1,7 @@
 .find-pets-container {
   max-width: 80vw;
   margin: 0 auto;
-  padding: 2vw;
-  padding-top: 6vw;
+  margin-top: 12vw;
   text-align: center;
 }
 

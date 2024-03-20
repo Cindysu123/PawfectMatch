@@ -28,10 +28,6 @@
   top: 14vw;
 }
 
-.selection-section {
-  margin-top: 20px;
-}
-
 .selection-section p {
   font-weight: bold;
   margin-bottom: 10px;
@@ -120,7 +116,7 @@
   top: 0;
   right: 0;
   z-index: -1;
-  background-color: #e4996d;
+  background-color: #7888af;
   border-radius: 0.8vw;
   transition: all 0.3s ease;
 }
@@ -223,7 +219,7 @@
 }
 
 .selection-section{
-  margin-top: 10vw;
+  margin-top: 6vw;
 }
 
 .p2{

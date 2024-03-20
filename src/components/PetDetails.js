@@ -8,31 +8,32 @@ import '../assets/css/PetDetails.css';
 import leftArrow from '../assets/img/arrowL.png';
 import rightArrow from '../assets/img/arrowR.png';
 import loading from '../assets/img/magnifying-glass.gif';
+import paw2 from '../assets/img/paw2.png';
 
-// Define the PetDetails component
+import check from '../assets/img/check.png'
+import cross from '../assets/img/cross.png'
+
+import email from '../assets/img/email.png'
+import phone from '../assets/img/phone.png'
+import address from '../assets/img/address.png'
+
 const PetDetails = () => {
-  // Get the pet ID from the URL parameters
   const { id } = useParams();
   
-  // Define state variables
   const [pet, setPet] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
-  // Function to handle next media (photo or video)
   const handleNextMedia = () => {
     setCurrentMediaIndex((prevIndex) => (prevIndex + 1) % getTotalMediaCount());
   };
 
-  // Function to handle previous media (photo or video)
   const handlePreviousMedia = () => {
     setCurrentMediaIndex((prevIndex) => (prevIndex - 1 + getTotalMediaCount()) % getTotalMediaCount());
   };
 
-  // Function to get total media count (photos + videos)
   const getTotalMediaCount = () => pet.photos.length + (pet.videos.length > 0 ? 1 : 0);
 
-  // Function to render the current media (photo or video)
   const renderCurrentMedia = () => {
     if (currentMediaIndex < pet.photos.length) {
       return <img src={pet.photos[currentMediaIndex]?.medium} alt={pet.name} className="pet-image" />;
@@ -40,12 +41,10 @@ const PetDetails = () => {
     return <div dangerouslySetInnerHTML={{ __html: pet.videos[0]?.embed }}></div>;
   };
 
-  // Function to handle page click and set current media index
   const handlePageClick = (pageIndex) => {
     setCurrentMediaIndex(pageIndex);
   };
 
-  // Define swipe handlers for navigation between media
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNextMedia(),
     onSwipedRight: () => handlePreviousMedia(),
@@ -53,7 +52,6 @@ const PetDetails = () => {
     trackMouse: true,
   });
 
-  // Fetch pet details when the component mounts
   useEffect(() => {
     const fetchPetDetails = async () => {
       setIsLoading(true);
@@ -65,13 +63,13 @@ const PetDetails = () => {
       });
       const data = await response.json();
       setPet(data.animal);
+      console.log(pet);
       setIsLoading(false);
     };
 
     fetchPetDetails();
   }, [id]);
 
-  // Show loading state
   if (isLoading) {
     return (
       <div className='Loading' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -81,28 +79,19 @@ const PetDetails = () => {
     );
   }
 
-  // Show pet not found message if no pet details are available
   if (!pet) {
     return <div>Pet not found</div>;
   }
 
-  // Render the pet details
   return (
-    <div {...handlers}>
-      {/* Main container for pet details */}
+    <div {...handlers} style={{background:'white'}}>
       <div className="pet-details-container">
-        {/* Pet name, breed, and age */}
-        <h2 className="pet-name">Meet {pet.name} - {pet.age} {pet.breeds.primary}</h2>
-        
-        {/* Main information section */}
-        <div className="pet-main-info">
-          {/* Pet image and media controls */}
+        <div className="pet-main-info" style={{display:'flex'}}>
           <div className="pet-image-container">
             {renderCurrentMedia()}
             {getTotalMediaCount() > 0 && (
               <div className="media-controls">
                 <button className="arrow-button Left" onClick={handlePreviousMedia} style={{ backgroundImage: `url(${leftArrow})` }}></button>
-                {/* Thumbnail buttons for photos */}
                 {pet.photos.map((photo, index) => (
                   <button
                     key={index}
@@ -111,7 +100,6 @@ const PetDetails = () => {
                     style={{ backgroundImage: `url(${photo.small})` }}
                   />
                 ))}
-                {/* Thumbnail button for video */}
                 {pet.videos && pet.videos.length > 0 && (
                   <button
                     className={`media-button ${currentMediaIndex === pet.photos.length ? "active-page" : ""}`}
@@ -123,67 +111,62 @@ const PetDetails = () => {
               </div>
             )}
           </div>
-
-          {/* Basic pet information */}
           <div className="pet-basic-info">
-            {pet.species && <p>Species: {pet.species}</p>}
-            {pet.breeds.primary && <p>Breed: {pet.breeds.primary}</p>}
-            {pet.age && <p>Age: {pet.age}</p>}
-            {pet.gender && <p>Gender: {pet.gender}</p>}
-            {pet.size && <p>Size: {pet.size}</p>}
+            <div style={{display:'flex', background:"#fdc072", padding:"2vw 1vw", borderRadius:"1vw 1vw 0 0"}}>
+              <img src={paw2} style={{width:"3vw", height:"3vw"}}/>
+              <div className="pet-name" style={{fontSize:'4vw', marginLeft:'1vw'}}>Meet {pet.name}!</div>
+            </div>
+            <div style={{margin:"2vw"}}>
+              {pet.breeds.primary && <div style={{fontSize:'1.8vw', margin:'2vw 0', borderBottom: '2px solid #301A0D'}}>Breed: {pet.breeds.primary}</div>}
+              {pet.colors.primary && <div style={{fontSize:'1.8vw', margin:'2vw 0', borderBottom: '2px solid #301A0D'}}>Colors: {pet.colors.primary}</div>}
+              {pet.age && <div style={{fontSize:'1.8vw', margin:'2vw 0', borderBottom: '2px solid #301A0D'}}>Age: {pet.age}</div>}
+              {pet.gender && <div style={{fontSize:'1.8vw', margin:'2vw 0', borderBottom: '2px solid #301A0D'}}>Gender: {pet.gender}</div>}
+              {pet.size && <div style={{fontSize:'1.8vw', margin:'2vw 0', borderBottom: '2px solid #301A0D'}}>Size: {pet.size}</div>}
+              {pet.status && <div style={{fontSize:'1.8vw', margin:'2vw 0', background:"#fdc072", padding:"1vw", textAlign:"center",borderRadius:"1vw"}} className="pet-status">{pet.status}</div>}
+            </div>
           </div>
         </div>
-        
-        {/* Pet attributes and environment details */}
         <div className="pet-attributes">
-          {/* Left group of attributes */}
-          <div className="pet-attributes-group-left">
-            {pet.coat && <p>Coat: {pet.coat}</p>}
-            {pet.colors.primary && <p>Colors: {pet.colors.primary}</p>}
-            {pet.attributes.spayed_neutered !== null && <p>Spayed/Neutered: {pet.attributes.spayed_neutered ? 'Yes' : 'No'}</p>}
-            {pet.attributes.house_trained !== null && <p>House Trained: {pet.attributes.house_trained ? 'Yes' : 'No'}</p>}
-            {pet.attributes.special_needs !== null && <p>Special Needs: {pet.attributes.special_needs ? 'Yes' : 'No'}</p>}
-            {pet.attributes.shots_current !== null && <p>Shots Current: {pet.attributes.shots_current ? 'Yes' : 'No'}</p>}
-          </div>
-          
-          {/* Right group of attributes and contact information */}
-          <div className="pet-attributes-group-right">
-            {/* Environment and description */}
-            <div className="pet-environment-description-group">
-              {pet.environment && (
-                <div className="pet-environment">
-                  <p className="environment-title">Environment:</p>
-                  <div className="environment-attributes">
-                    <p>Children: {pet.environment.children ? 'Yes' : 'No'}</p>
-                    <p>Dogs: {pet.environment.dogs ? 'Yes' : 'No'}</p>
-                    <p>Cats: {pet.environment.cats ? 'Yes' : 'No'}</p>
-                  </div>
-                </div>
-              )}
-              {pet.description && (
-                <p className="pet-description">
-                  Description: {pet.description.split(".")[0]}.
-                </p>
-              )}
-              {pet.status && <p className="pet-status">Status: {pet.status}</p>}
+          <div className='pet-description' style={{background:"#fcf2dc", borderRadius:"1vw", border:"solid 1px #E4996D"}}>
+            <div style={{display:'flex', alignItems:"center", backgroundColor:"#e4996d", padding:'1vw',borderRadius:"1vw 1vw 0 0", color: "#301A0D"}}>
+              <img src={paw2}></img>
+              <div style={{fontSize:'1.8vw', marginLeft:'1vw'}}>Description</div>
             </div>
-            
-            {/* Contact information */}
-            <div className="pet-contact-info-group">
-              {pet.contact.email && <p>Contact: {pet.contact.email}</p>}
-              {pet.contact.phone && <p>Phone: {pet.contact.phone}</p>}
-              {pet.contact.address && (
-                <p>Address: {`${pet.contact.address.address1}, ${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcode}, ${pet.contact.address.country}`}</p>
-              )}
+            <div style={{textAlign:'left', color: "#301A0D", padding:"2vw", lineHeight:"2vw"}}>
+              {pet.name} came to Hospice Hearts with his sibling Gypsy but since she likes to start fights with him, we feel they would do better seperated. {pet.name} is a sweet little boy who loves being a lap dog and will happily give kisses. He does will in a play pen and has been good about going outside once on a schedule. He is a bit of a barker as he will warn you about any person or dog who would dare to step into his domain or line of sight. Overall, he is a sweet 8year old boy looking for a calm home with a person who loves him. He can be a bit nervous at first but once he trusts you he will be your faithful companion following you around the house.
+            </div>
+          </div>
+          <div style={{display:"flex", textAlign:"left"}}>
+            <div className="pet-attributes-group-left" style={{background:"#c9cfdf", borderRadius:'1vw', border:"solid 1px #7888AF"}}>
+              <div style={{display:'flex', alignItems:"center", backgroundColor:"#7888af", padding:'1vw',borderRadius:"1vw 1vw 0 0", color: "#301A0D"}}>
+                <img src={paw2}/>
+                <div style={{fontSize:'1.8vw', marginLeft:'1vw'}}>Condition</div>
+              </div>
+              <div style={{padding:"1vw"}}>
+                {pet.attributes.spayed_neutered !== null && <div style={{display:"flex", alignItems:"center", width:"20vw", justifyContent:"space-between", margin:"0 auto"}}><p>Spayed/Neutered: {pet.attributes.spayed_neutered ? 'Yes' : 'No'}</p>{pet.attributes.spayed_neutered ? <img src={check}/> : <img src={cross}/>}</div>}
+                {pet.attributes.house_trained !== null && <div style={{display:"flex", alignItems:"center", width:"20vw", justifyContent:"space-between", margin:"0 auto"}}><p>House Trained: {pet.attributes.house_trained ? 'Yes' : 'No'}</p>{pet.attributes.house_trained ? <img src={check}/> : <img src={cross}/>}</div>}
+                {pet.attributes.special_needs !== null && <div style={{display:"flex", alignItems:"center", width:"20vw", justifyContent:"space-between", margin:"0 auto"}}><p>Special Needs: {pet.attributes.special_needs ? 'Yes' : 'No'}</p>{pet.attributes.special_needs ? <img src={check}/> : <img src={cross}/>}</div>}
+                {pet.attributes.shots_current !== null && <div style={{display:"flex", alignItems:"center", width:"20vw", justifyContent:"space-between", margin:"0 auto"}}><p>Shots Current: {pet.attributes.shots_current ? 'Yes' : 'No'}</p>{pet.attributes.shots_current ? <img src={check}/> : <img src={cross}/>}</div>}
+              </div>
+            </div>
+            <div className="pet-attributes-group-right">
+              <div style={{display:'flex', alignItems:"center", padding:'1vw'}}>
+                <img src={paw2}/>
+                <div style={{fontSize:'1.8vw', marginLeft:'1vw'}}>Condition</div>
+              </div>
+              <div style={{padding:"1vw", fontSize:'1.8vw'}}>
+                {pet.contact.email && <div style={{display:"flex", alignItems:"center"}}><img src={email} style={{marginRight:"1vw"}}/><p>Email: {pet.contact.email}</p></div>}
+                {pet.contact.phone && <div style={{display:"flex", alignItems:"center"}}><img src={phone} style={{marginRight:"1vw"}}/><p>Phone: {pet.contact.phone}</p></div>}
+                {pet.contact.address && (
+                  <div style={{display:"flex", alignItems:"center"}}><img src={address} style={{marginRight:"1vw"}}/><p>Address: {`${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcode}, ${pet.contact.address.country}`}</p></div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* Footer component */}
       <Footer />
     </div>
   );
 };
-
-// Export the component for use in other parts of the application
 export default PetDetails;

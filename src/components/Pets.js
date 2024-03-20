@@ -11,7 +11,6 @@ import rightArrow from '../assets/img/arrowR.png';
 import loading from '../assets/img/magnifying-glass.gif';
 
 const Pets = () => {
-  // State for storing pets and filter options
   const [pets, setPets] = useState([]);
   const [selectedAge, setSelectedAge] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
@@ -23,17 +22,13 @@ const Pets = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [petTypes, setPetTypes] = useState([]);
 
-
-  // Get pet type from URL parameters
   const { type } = useParams();
   const [selectedType, setSelectedType] = useState('');
 
-  // Update selected type when URL parameter changes
   useEffect(() => {
     setSelectedType(type || '');
   }, [type]);
 
-  // Fetch pets based on selected filters
   useEffect(() => {
     const fetchPets = async () => {
       setIsLoading(true);
@@ -41,7 +36,7 @@ const Pets = () => {
       let petImagesLoaded = 0;
       let page = 1;
       let petsWithImages = [];
-      let maxPets = 90;
+      let maxPets = 27;
 
       while (petsWithImages.length < maxPets) {
         const params = new URLSearchParams({
@@ -60,6 +55,7 @@ const Pets = () => {
         });
 
         const data = await response.json();
+        console.log(data);
 
         const pets = data.animals.filter(pet => pet.photos && pet.photos.length > 0);
 
@@ -81,24 +77,19 @@ const Pets = () => {
     fetchPets();
   }, [currentPage, selectedType, selectedAge, selectedSize, selectedGender, selectedBreedFinal]);
     
-
-  // Reset current page when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedType, selectedAge, selectedSize, selectedGender, selectedBreed]);
 
-  // Update breed options based on fetched pets
   useEffect(() => {
     const breeds = Array.from(new Set(pets.map(pet => pet.breeds.primary)));
     setBreedOptions(breeds);
   }, [pets]);
 
-  // Scroll to top when page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  // Filtering pets based on selected filters
   const filteredPets = pets.filter(pet => {
     return (
       (selectedType === '' || pet.type === selectedType) &&
@@ -109,11 +100,9 @@ const Pets = () => {
     );
   });
 
-  // Functions to handle pagination
   const nextPage = () => { if (currentPage < 5) setCurrentPage(currentPage + 1); };
   const prevPage = () => { if (currentPage > 1) setCurrentPage(currentPage - 1); };
 
-  // Button styling
   const buttonStyle = {
     backgroundImage: `url(${paw})`,
     backgroundSize: 'contain',
@@ -127,19 +116,12 @@ const Pets = () => {
     height: '5vw'
   };
   const inactiveButtonStyle = { ...buttonStyle, opacity: 0.5, width: '4vw', height: '4vw' };
-
-  // Define displayed pets based on current page
-  const displayedPets = filteredPets.slice((currentPage - 1) * 18, currentPage * 18);
-
-  // Define pagination page numbers
+  const displayedPets = filteredPets.slice((currentPage - 1) * 9, currentPage * 9);
   const pages = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
 
   return (
-    // JSX for rendering the component
     <div className='top-container'>
-      {/* Selection section for filters */}
       <div className="selection-section">
-        {/* Type and Breed selection */}
         <div className='selection1'>
           <label>Type:</label>
           <select name="type" value={selectedType} onChange={e => setSelectedType(e.target.value)}>
@@ -161,7 +143,6 @@ const Pets = () => {
             ))}
           </datalist>
         </div>
-        {/* Age selection */}
         <div className='selection2'>
           <label>Age:</label>
           <select name="age" onChange={e => setSelectedAge(e.target.value)}>
@@ -172,7 +153,6 @@ const Pets = () => {
             <option value="Senior">Senior</option>
           </select>
         </div>
-        {/* Size selection */}
         <div className='selection3'>
           <label>Size:</label>
           <select name="size" onChange={e => setSelectedSize(e.target.value)}>
@@ -183,7 +163,6 @@ const Pets = () => {
             <option value="Extra Large">Extra Large</option>
           </select>
         </div>
-        {/* Gender selection */}
         <div className='selection4'>
           <label>Gender:</label>
           <label>
@@ -197,7 +176,6 @@ const Pets = () => {
           </label>
         </div>
       </div>
-      {/* Loading section */}
       {isLoading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignItems: 'center' }}>
           <div>Loading...</div>
@@ -205,25 +183,25 @@ const Pets = () => {
         </div>
       ) : (
         <div className='select-container'>
-          {/* Displayed pets */}
           <div className='pets'>
-            {displayedPets.map(pet => (
-              <div key={pet.id} style={{ width: '60%', display: 'block' }}>
+            {displayedPets.map((pet, index) => (
+              <div
+                key={pet.id}
+                className='pet'
+                style={{animationDelay: `${index * 0.3}s`}}
+              >
                 <Link to={`/pets/${pet.type}/${pet.id}`}>
                   <PetCard pet={pet} />
                 </Link>
               </div>
             ))}
           </div>
-          {/* Pagination */}
           <div className="pagination">
-            {/* Previous page button */}
             <button className='LRB' onClick={prevPage}>
               <img src={leftArrow} alt="previous page" style={{ height: '60%', width: '60%' }} />
             </button>
-            {/* Page numbers */}
             {pages.map((page, index) => {
-              if (page < 1 || page > 5) return null; // Don't display negative or over 5 page numbers
+              if (page < 1 || page > 5) return null;
               return (
                 <button className='pawb'
                   key={index}
@@ -234,14 +212,12 @@ const Pets = () => {
                 </button>
               );
             })}
-            {/* Next page button */}
             <button className='LRB' onClick={nextPage}>
               <img src={rightArrow} alt="next page" style={{ height: '60%', width: '60%' }} />
             </button>
           </div>
         </div>
       )}
-      {/* Footer */}
       <Footer />
     </div>
   );
